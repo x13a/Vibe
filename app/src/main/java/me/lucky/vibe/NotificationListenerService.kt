@@ -58,6 +58,7 @@ class NotificationListenerService : NotificationListenerService() {
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onListenerConnected() {
         super.onListenerConnected()
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
         val packages = packageManager
             .getInstalledPackages(0)
             .map { it.packageName }
