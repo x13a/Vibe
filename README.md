@@ -2,7 +2,10 @@
 
 Vibrate on answer.
 
-
+<img 
+     src="https://user-images.githubusercontent.com/53379023/148951146-2d15e42e-0641-4eac-be28-c3fea38c5026.png" 
+     width="30%" 
+     height="30%">
 
 Tiny app to vibrate when outgoing call is answered. Has to work with `AOSP` like dialers.
 
