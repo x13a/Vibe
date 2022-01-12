@@ -13,7 +13,7 @@ Tiny app to vibrate when the call is answered. Has to work with `AOSP` like dial
 
 `VIBRATE` wtf?!
 
-`QUERY_ALL_PACKAGES` disable notification events for not dialer apps on Android 12
+`QUERY_ALL_PACKAGES` disable notification events for not dialer apps on Android 12 and newer
 
 ## License
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](https://www.gnu.org/licenses/gpl-3.0.en.html)
