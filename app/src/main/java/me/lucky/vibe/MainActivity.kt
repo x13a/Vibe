@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setup() {
-        binding.button.setOnClickListener {
+        binding.gotoButton.setOnClickListener {
             startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
         }
     }

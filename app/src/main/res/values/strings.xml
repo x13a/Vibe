@@ -2,5 +2,5 @@
     <string name="app_name">Vibe</string>
     <string name="service_name">Vibrator</string>
     <string name="description">The app will try to vibrate when the call is answered. You have to grant device and app notifications permission.</string>
-    <string name="button">GOTO</string>
+    <string name="goto_button">GOTO</string>
 </resources>
