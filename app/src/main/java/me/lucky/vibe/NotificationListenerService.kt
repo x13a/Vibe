@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi
 class NotificationListenerService : NotificationListenerService() {
     companion object {
         private const val DIALER_SUFFIX = ".dialer"
+        private const val MAX_DELAY = 2000
         private val VIBE_PATTERN = longArrayOf(50, 100, 50, 100)
     }
 
@@ -41,7 +42,8 @@ class NotificationListenerService : NotificationListenerService() {
         if (audioManager?.mode != AudioManager.MODE_IN_CALL ||
             !sbn.isOngoing ||
             !sbn.packageName.endsWith(DIALER_SUFFIX) ||
-            !sbn.notification.extras.getBoolean(Notification.EXTRA_SHOW_CHRONOMETER)) return
+            !sbn.notification.extras.getBoolean(Notification.EXTRA_SHOW_CHRONOMETER) ||
+            sbn.notification.`when` < System.currentTimeMillis() - MAX_DELAY) return
         vibrate()
     }
 
