@@ -7,7 +7,7 @@ Vibrate on answer.
      width="30%" 
      height="30%">
 
-Tiny app to vibrate when call is answered. Has to work with `AOSP` like dialers.
+Tiny app to vibrate when the call is answered. Has to work with `AOSP` like dialers.
 
 ## Permissions
 
