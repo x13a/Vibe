@@ -1,7 +1,6 @@
 package me.lucky.vibe
 
 import android.app.Notification
-import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
 import android.os.Build
@@ -26,11 +25,11 @@ class NotificationListenerService : NotificationListenerService() {
 
     override fun onCreate() {
         super.onCreate()
-        audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager?
+        audioManager = getSystemService(AudioManager::class.java)
         vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            (getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager?)?.defaultVibrator
+            getSystemService(VibratorManager::class.java)?.defaultVibrator
         } else {
-            getSystemService(Context.VIBRATOR_SERVICE) as Vibrator?
+            getSystemService(Vibrator::class.java)
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             vibrationEffect = VibrationEffect.createWaveform(VIBE_PATTERN, -1)
