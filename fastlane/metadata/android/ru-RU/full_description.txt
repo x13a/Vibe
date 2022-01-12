@@ -1,3 +1,8 @@
 Вибрация при ответе.
 
-Подобие приложения для вибрации при ответе на вызов. Должно работать со звонилками такими как AOSP.
+Крошечное приложение для вибрации при ответе на вызов.
+
+Протестировано с:
+* Phone (com.android.dialer)
+* Google Phone (com.google.android.dialer)
+* Simple Dialer (com.simplemobiletools.dialer)
