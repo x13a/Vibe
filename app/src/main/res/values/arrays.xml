@@ -1,6 +1,0 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <string-array name="texts" tools:ignore="InconsistentArrays">
-        <item>ongoing</item>
-        <item>on-going</item>
-    </string-array>
-</resources>

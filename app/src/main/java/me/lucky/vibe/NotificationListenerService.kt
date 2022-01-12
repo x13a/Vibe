@@ -18,21 +18,19 @@ class NotificationListenerService : NotificationListenerService() {
         private val VIBE_PATTERN = longArrayOf(50, 100, 50, 100)
     }
 
-    private lateinit var texts: Array<String>
-    private lateinit var vibrator: Vibrator
-    private lateinit var audioManager: AudioManager
+    private var audioManager: AudioManager? = null
+    private var vibrator: Vibrator? = null
     @RequiresApi(Build.VERSION_CODES.O)
     private var vibrationEffect: VibrationEffect? = null
 
     override fun onCreate() {
         super.onCreate()
-        texts = resources.getStringArray(R.array.texts)
+        audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager?
         vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            (getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager).defaultVibrator
+            (getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager?)?.defaultVibrator
         } else {
-            getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            getSystemService(Context.VIBRATOR_SERVICE) as Vibrator?
         }
-        audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             vibrationEffect = VibrationEffect.createWaveform(VIBE_PATTERN, -1)
         }
@@ -40,22 +38,18 @@ class NotificationListenerService : NotificationListenerService() {
 
     override fun onNotificationPosted(sbn: StatusBarNotification) {
         super.onNotificationPosted(sbn)
-        if (audioManager.mode != AudioManager.MODE_IN_CALL) return
-        if (!sbn.isOngoing || !sbn.packageName.endsWith(DIALER_SUFFIX)) return
-        val text = sbn
-            .notification
-            .extras
-            .getString(Notification.EXTRA_TEXT, "")
-            .lowercase()
-        if (text.isEmpty() || !texts.any { text.startsWith(it) }) return
+        if (audioManager?.mode != AudioManager.MODE_IN_CALL ||
+            !sbn.isOngoing ||
+            !sbn.packageName.endsWith(DIALER_SUFFIX) ||
+            !sbn.notification.extras.getBoolean(Notification.EXTRA_SHOW_CHRONOMETER)) return
         vibrate()
     }
 
     private fun vibrate() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrator.vibrate(vibrationEffect)
+            vibrator?.vibrate(vibrationEffect)
         } else {
-            vibrator.vibrate(VIBE_PATTERN, -1)
+            vibrator?.vibrate(VIBE_PATTERN, -1)
         }
     }
 

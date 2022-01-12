@@ -1,3 +1,3 @@
 Vibrate on answer.
 
-Tiny app to vibrate when outgoing call is answered. Has to work with AOSP like dialers.
+Tiny app to vibrate when call is answered. Has to work with AOSP like dialers.

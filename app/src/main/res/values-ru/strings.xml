@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">Vibe</string>
     <string name="service_name">Вибратор</string>
-    <string name="description">Приложение попытается вибрировать при ответе на исходящий звонок. Вы должны выдать разрешение на чтение уведомлений устройства.</string>
+    <string name="description">Приложение попытается вибрировать при ответе на звонок. Вы должны выдать разрешение на чтение уведомлений устройства.</string>
     <string name="button">GOTO</string>
 </resources>
