@@ -3,7 +3,7 @@
 Vibrate on answer.
 
 <img 
-     src="https://user-images.githubusercontent.com/53379023/149050938-116e8bb2-2f8a-4e68-8dc2-ed06efc54bd2.png" 
+     src="https://user-images.githubusercontent.com/53379023/149052814-061763cc-8484-4734-9055-d98015685292.png" 
      width="30%" 
      height="30%">
 
