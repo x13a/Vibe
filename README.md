@@ -2,6 +2,11 @@
 
 Vibrate on answer.
 
+[<img
+     src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/me.lucky.vibe/)
+
 <img 
      src="https://user-images.githubusercontent.com/53379023/149052814-061763cc-8484-4734-9055-d98015685292.png" 
      width="30%" 
