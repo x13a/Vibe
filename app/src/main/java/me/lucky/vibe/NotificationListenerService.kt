@@ -3,6 +3,7 @@ package me.lucky.vibe
 import android.app.Notification
 import android.content.Context
 import android.content.Intent
+import android.media.AudioManager
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -19,6 +20,7 @@ class NotificationListenerService : NotificationListenerService() {
 
     private lateinit var texts: Array<String>
     private lateinit var vibrator: Vibrator
+    private lateinit var audioManager: AudioManager
     @RequiresApi(Build.VERSION_CODES.O)
     private var vibrationEffect: VibrationEffect? = null
 
@@ -30,6 +32,7 @@ class NotificationListenerService : NotificationListenerService() {
         } else {
             getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         }
+        audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             vibrationEffect = VibrationEffect.createWaveform(VIBE_PATTERN, -1)
         }
@@ -37,6 +40,7 @@ class NotificationListenerService : NotificationListenerService() {
 
     override fun onNotificationPosted(sbn: StatusBarNotification) {
         super.onNotificationPosted(sbn)
+        if (audioManager.mode != AudioManager.MODE_IN_CALL) return
         if (!sbn.isOngoing || !sbn.packageName.endsWith(DIALER_SUFFIX)) return
         val text = sbn
             .notification
