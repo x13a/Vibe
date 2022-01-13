@@ -1,5 +1,3 @@
-Vibrate on call answer.
-
 Tiny app to vibrate when the call is answered.
 
 Tested with:
