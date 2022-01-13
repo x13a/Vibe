@@ -1,1 +1,1 @@
-Vibrate on answer
+Vibrate on call answer

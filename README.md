@@ -1,6 +1,6 @@
 # Vibe
 
-Vibrate on answer.
+Vibrate on call answer.
 
 [<img
      src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
