@@ -1,4 +1,4 @@
-Tiny app to vibrate when the call is answered.
+Tiny app to vibrate when a call is answered.
 
 Tested with:
 * Phone (com.android.dialer)

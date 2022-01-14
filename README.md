@@ -1,6 +1,6 @@
 # Vibe
 
-Vibrate on call answer.
+Vibrate on a call answer.
 
 [<img
      src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
@@ -12,7 +12,7 @@ Vibrate on call answer.
      width="30%" 
      height="30%">
 
-Tiny app to vibrate when the call is answered.
+Tiny app to vibrate when a call is answered.
 
 Tested with:
 - Phone (com.android.dialer)
