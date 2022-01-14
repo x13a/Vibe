@@ -8,7 +8,7 @@ Vibrate on a call answer.
      height="80">](https://f-droid.org/packages/me.lucky.vibe/)
 
 <img 
-     src="https://user-images.githubusercontent.com/53379023/149052814-061763cc-8484-4734-9055-d98015685292.png" 
+     src="https://user-images.githubusercontent.com/53379023/149461168-d4d41909-3981-40e9-80c4-5b1669b02b1d.png" 
      width="30%" 
      height="30%">
 
