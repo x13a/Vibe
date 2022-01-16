@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Vibe</string>
+    <string name="service_name">Вібратор</string>
+    <string name="description">Застосунок намагатиметься вібрувати, якщо відповісти на дзвінок. Вам потрібно дозволити сповіщення від застосунку і пристрою.</string>
+    <string name="goto_button">Перейти</string>
+</resources>

@@ -1,0 +1,6 @@
+Крихітний застосунок для вібрування під час відповіді на дзвінок.
+
+Перевірено на:
+* Phone (com.android.dialer)
+* Google Phone (com.google.android.dialer)
+* Simple Dialer (com.simplemobiletools.dialer)
