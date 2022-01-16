@@ -51,6 +51,7 @@ class NotificationListenerService : NotificationListenerService() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             vibrator?.vibrate(vibrationEffect)
         } else {
+            @Suppress("deprecation")
             vibrator?.vibrate(VIBE_PATTERN, -1)
         }
     }
