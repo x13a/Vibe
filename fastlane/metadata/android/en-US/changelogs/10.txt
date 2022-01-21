@@ -1,0 +1,2 @@
+add option to disable package names filter
+add Italian translation, thanks to Giovanni (@gdonisi) + @giovannidonisi
