@@ -9,15 +9,20 @@ import android.os.Vibrator
 import android.os.VibratorManager
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
+import android.telecom.TelecomManager
+import android.util.Log
 import androidx.annotation.RequiresApi
 
 class NotificationListenerService : NotificationListenerService() {
     companion object {
+        private val TAG = NotificationListenerService::class.java.simpleName
         private const val DIALER_SUFFIX = ".dialer"
         private const val MAX_DELAY = 2000
         private val VIBE_PATTERN = longArrayOf(50, 100, 50, 100)
     }
 
+    private lateinit var prefs: Preferences
+    private var telecomManager: TelecomManager? = null
     private var audioManager: AudioManager? = null
     private var vibrator: Vibrator? = null
     @RequiresApi(Build.VERSION_CODES.O)
@@ -25,6 +30,12 @@ class NotificationListenerService : NotificationListenerService() {
 
     override fun onCreate() {
         super.onCreate()
+        init()
+    }
+
+    private fun init() {
+        prefs = Preferences(this)
+        telecomManager = getSystemService(TelecomManager::class.java)
         audioManager = getSystemService(AudioManager::class.java)
         vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             getSystemService(VibratorManager::class.java)?.defaultVibrator
@@ -39,15 +50,18 @@ class NotificationListenerService : NotificationListenerService() {
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
         super.onNotificationPosted(sbn)
         if (sbn == null) return
-        if (audioManager?.mode != AudioManager.MODE_IN_CALL ||
-            !sbn.isOngoing ||
-            !sbn.packageName.endsWith(DIALER_SUFFIX) ||
-            !sbn.notification.extras.getBoolean(Notification.EXTRA_SHOW_CHRONOMETER) ||
-            sbn.notification.`when` < System.currentTimeMillis() - MAX_DELAY) return
+        if (audioManager?.mode != AudioManager.MODE_IN_CALL
+            || !sbn.isOngoing
+            || (prefs.isFilterPackageNames
+                && !sbn.packageName.endsWith(DIALER_SUFFIX)
+                && sbn.packageName != telecomManager?.defaultDialerPackage)
+            || !sbn.notification.extras.getBoolean(Notification.EXTRA_SHOW_CHRONOMETER)
+            || sbn.notification.`when` < System.currentTimeMillis() - MAX_DELAY) return
         vibrate()
     }
 
     private fun vibrate() {
+        Log.d(TAG, "vibrate")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             vibrator?.vibrate(vibrationEffect)
         } else {
@@ -59,7 +73,7 @@ class NotificationListenerService : NotificationListenerService() {
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onListenerConnected() {
         super.onListenerConnected()
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || !prefs.isFilterPackageNames) return
         val packages = packageManager
             .getInstalledPackages(0)
             .map { it.packageName }
@@ -70,6 +84,12 @@ class NotificationListenerService : NotificationListenerService() {
                 0,
             )
             .map{ it.activityInfo.packageName })
-        migrateNotificationFilter(0, packages.filterNot { it.endsWith(DIALER_SUFFIX) })
+        migrateNotificationFilter(
+            0,
+            packages.filterNot {
+                it.endsWith(DIALER_SUFFIX) ||
+                it == telecomManager?.defaultDialerPackage
+            },
+        )
     }
 }

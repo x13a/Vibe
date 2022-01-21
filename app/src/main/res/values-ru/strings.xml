@@ -4,4 +4,6 @@
     <string name="service_name">Вибратор</string>
     <string name="description">Приложение попытается вибрировать при ответе на звонок. Вы должны выдать разрешение на чтение уведомлений устройства.</string>
     <string name="goto_button">GOTO</string>
+    <string name="filter_package_names">Фильтровать пакеты приложений</string>
+    <string name="filter_package_names_description">Обрабатывать только названия пакетов приложений с суффиксом \".dialer\".</string>
 </resources>
