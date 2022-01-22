@@ -5,5 +5,5 @@
     <string name="description">The app will try to vibrate when a call is answered. You have to grant device and app notifications permission.</string>
     <string name="goto_button">GOTO</string>
     <string name="filter_package_names">Filter packages</string>
-    <string name="filter_package_names_description">Only process package names with \".dialer\" suffix.</string>
+    <string name="filter_package_names_description">Only pass package names with \".dialer\" suffix.</string>
 </resources>
