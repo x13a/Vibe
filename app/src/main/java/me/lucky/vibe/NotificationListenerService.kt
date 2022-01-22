@@ -56,6 +56,7 @@ class NotificationListenerService : NotificationListenerService() {
                 && !sbn.packageName.endsWith(DIALER_SUFFIX)
                 && sbn.packageName != telecomManager?.defaultDialerPackage)
             || !sbn.notification.extras.getBoolean(Notification.EXTRA_SHOW_CHRONOMETER)
+            || sbn.notification.extras.getBoolean(Notification.EXTRA_CHRONOMETER_COUNT_DOWN)
             || sbn.notification.`when` < System.currentTimeMillis() - MAX_DELAY) return
         vibrate()
     }
