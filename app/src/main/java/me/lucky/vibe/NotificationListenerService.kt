@@ -71,10 +71,14 @@ class NotificationListenerService : NotificationListenerService() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.S)
     override fun onListenerConnected() {
         super.onListenerConnected()
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || !prefs.isFilterPackageNames) return
+        migrate()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.S)
+    private fun migrate() {
         val packages = packageManager
             .getInstalledPackages(0)
             .map { it.packageName }
