@@ -1,4 +1,4 @@
-Piccola app per vibrare quando una chiamata è risposta.
+Piccola app per vibrare quando una chiamata viene risposta.
 
 Testata con:
 * Telefono (com.android.dialer)
