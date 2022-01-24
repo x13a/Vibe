@@ -1,3 +1,3 @@
 # Privacy Police
 
-The app has nothing to store.
+The app has nothing to store, but settings.
