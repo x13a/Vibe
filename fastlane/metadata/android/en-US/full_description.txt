@@ -1,6 +1,6 @@
 Tiny app to vibrate when a call is answered.
 
-Tested with:
+Tested:
 * Phone (com.android.dialer)
 * Google Phone (com.google.android.dialer)
 * Simple Dialer (com.simplemobiletools.dialer)

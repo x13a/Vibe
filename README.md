@@ -18,7 +18,7 @@ Vibrate on a call answer.
 
 Tiny app to vibrate when a call is answered.
 
-Tested with:
+Tested:
 - Phone (com.android.dialer)
 - Google Phone (com.google.android.dialer)
 - Simple Dialer (com.simplemobiletools.dialer)
@@ -27,7 +27,7 @@ Tested with:
 
 `VIBRATE` wtf?!
 
-`QUERY_ALL_PACKAGES` disable notification events for not dialer apps on Android 12 and newer
+`QUERY_ALL_PACKAGES` disable notification events for not .dialer apps on Android 12 and newer
 
 ## License
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](https://www.gnu.org/licenses/gpl-3.0.en.html)

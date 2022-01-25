@@ -1,6 +1,6 @@
 Крошечное приложение для вибрации при ответе на звонок.
 
-Проверено с:
+Проверено:
 * Phone (com.android.dialer)
 * Google Phone (com.google.android.dialer)
 * Simple Dialer (com.simplemobiletools.dialer)
