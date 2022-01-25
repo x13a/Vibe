@@ -1,9 +1,9 @@
 package me.lucky.vibe
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import androidx.appcompat.app.AppCompatActivity
 
 import me.lucky.vibe.databinding.ActivityMainBinding
 
