@@ -25,6 +25,8 @@ Tested:
 
 ## Permissions
 
+`NOTIFICATIONS` scan for a call answer
+
 `VIBRATE` wtf?!
 
 `QUERY_ALL_PACKAGES` disable notification events for not .dialer apps on Android 12 and newer
