@@ -4,3 +4,6 @@
 * Phone (com.android.dialer)
 * Google Phone (com.google.android.dialer)
 * Simple Dialer (com.simplemobiletools.dialer)
+
+Это свободное программное обеспечение с открытым исходным кодом.
+Лицензия: GPL-3

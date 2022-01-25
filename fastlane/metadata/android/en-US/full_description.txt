@@ -4,3 +4,6 @@ Tested:
 * Phone (com.android.dialer)
 * Google Phone (com.google.android.dialer)
 * Simple Dialer (com.simplemobiletools.dialer)
+
+It is Free Open Source Software.
+License: GPL-3
