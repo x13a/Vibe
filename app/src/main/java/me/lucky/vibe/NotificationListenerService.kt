@@ -49,8 +49,8 @@ class NotificationListenerService : NotificationListenerService() {
 
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
         super.onNotificationPosted(sbn)
-        if (sbn == null) return
-        if (audioManager?.mode != AudioManager.MODE_IN_CALL
+        if (sbn == null
+            || audioManager?.mode != AudioManager.MODE_IN_CALL
             || !sbn.isOngoing
             || (prefs.isFilterPackageNames
                 && !sbn.packageName.endsWith(DIALER_SUFFIX)
