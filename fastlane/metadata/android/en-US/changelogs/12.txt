@@ -1,0 +1,2 @@
+update Italian translation, thanks to Giovanni (@gdonisi) + @giovannidonisi
+under the hood improvements
