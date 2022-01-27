@@ -4,3 +4,6 @@ Testata:
 * Telefono (com.android.dialer)
 * Telefono Google (com.google.android.dialer)
 * Simple Dialer (com.simplemobiletools.dialer)
+
+È un software open source gratuito.
+Licenza: GPL-3
