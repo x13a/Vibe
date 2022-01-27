@@ -12,21 +12,19 @@ import android.service.notification.StatusBarNotification
 import android.telecom.TelecomManager
 import android.util.Log
 import androidx.annotation.RequiresApi
+import java.lang.NumberFormatException
 
 class NotificationListenerService : NotificationListenerService() {
     companion object {
         private val TAG = NotificationListenerService::class.java.simpleName
         private const val DIALER_SUFFIX = ".dialer"
         private const val MAX_DELAY = 2000
-        private val VIBE_PATTERN = longArrayOf(50, 100, 50, 100)
     }
 
     private lateinit var prefs: Preferences
     private var telecomManager: TelecomManager? = null
     private var audioManager: AudioManager? = null
     private var vibrator: Vibrator? = null
-    @RequiresApi(Build.VERSION_CODES.O)
-    private var vibrationEffect: VibrationEffect? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -41,9 +39,6 @@ class NotificationListenerService : NotificationListenerService() {
             getSystemService(VibratorManager::class.java)?.defaultVibrator
         } else {
             getSystemService(Vibrator::class.java)
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrationEffect = VibrationEffect.createWaveform(VIBE_PATTERN, -1)
         }
     }
 
@@ -65,11 +60,22 @@ class NotificationListenerService : NotificationListenerService() {
     private fun vibrate() {
         Log.d(TAG, "vibrate")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrator?.vibrate(vibrationEffect)
+            vibrator?.vibrate(VibrationEffect.createWaveform(vibePattern(), -1))
         } else {
             @Suppress("deprecation")
-            vibrator?.vibrate(VIBE_PATTERN, -1)
+            vibrator?.vibrate(vibePattern(), -1)
         }
+    }
+
+    private fun vibePattern(): LongArray? {
+        val toLongArray = { str: String ->
+            try {
+                str.split(Preferences.VIBE_PATTERN_DELIMITER).map { it.toLong() }.toLongArray()
+            } catch (exc: NumberFormatException) { null }
+        }
+        var res = toLongArray(prefs.vibePattern)
+        if (res == null) res = toLongArray(Preferences.DEFAULT_VIBE_PATTERN)
+        return res
     }
 
     override fun onListenerConnected() {
