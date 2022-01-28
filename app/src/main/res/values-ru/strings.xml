@@ -7,5 +7,5 @@
     <string name="filter_package_names">Фильтровать пакеты приложений</string>
     <string name="filter_package_names_description">Пропускать только названия пакетов приложений с суффиксом \".dialer\".</string>
     <string name="vibe_pattern">Паттерн вибрации</string>
-    <string name="vibe_pattern_error">Пауза,Вибрация</string>
+    <string name="vibe_pattern_error">Пауза,Вибрация..</string>
 </resources>

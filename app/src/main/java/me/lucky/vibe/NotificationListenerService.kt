@@ -1,5 +1,6 @@
 package me.lucky.vibe
 
+import android.Manifest
 import android.app.Notification
 import android.content.Intent
 import android.media.AudioManager
@@ -12,6 +13,7 @@ import android.service.notification.StatusBarNotification
 import android.telecom.TelecomManager
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.annotation.RequiresPermission
 import java.lang.NumberFormatException
 
 class NotificationListenerService : NotificationListenerService() {
@@ -57,6 +59,7 @@ class NotificationListenerService : NotificationListenerService() {
         vibrate()
     }
 
+    @RequiresPermission(Manifest.permission.VIBRATE)
     private fun vibrate() {
         Log.d(TAG, "vibrate")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -73,9 +76,9 @@ class NotificationListenerService : NotificationListenerService() {
                 str.split(Preferences.VIBE_PATTERN_DELIMITER).map { it.toLong() }.toLongArray()
             } catch (exc: NumberFormatException) { null }
         }
-        var res = toLongArray(prefs.vibePattern)
-        if (res == null) res = toLongArray(Preferences.DEFAULT_VIBE_PATTERN)
-        return res
+        var result = toLongArray(prefs.vibePattern)
+        if (result == null) result = toLongArray(Preferences.DEFAULT_VIBE_PATTERN)
+        return result
     }
 
     override fun onListenerConnected() {

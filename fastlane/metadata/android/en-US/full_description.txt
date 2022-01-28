@@ -5,5 +5,10 @@ Tested:
 * Google Phone (com.google.android.dialer)
 * Simple Dialer (com.simplemobiletools.dialer)
 
+Permissions:
+* Notifications    - scan for a call answer
+* Vibrate          - notify when a call is answered
+* QueryAllPackages - disable notification events for not .dialer apps on Android 12 and newer
+
 It is Free Open Source Software.
 License: GPL-3
