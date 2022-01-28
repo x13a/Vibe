@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Vibe</string>
-    <string name="service_name">Вибратор</string>
+    <string name="service_label">Вибратор</string>
     <string name="description">Приложение попытается вибрировать при ответе на звонок. Вы должны выдать разрешение на чтение уведомлений устройства.</string>
     <string name="goto_button">GOTO</string>
     <string name="filter_package_names">Фильтровать пакеты приложений</string>

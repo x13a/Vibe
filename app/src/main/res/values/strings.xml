@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Vibe</string>
-    <string name="service_name">Vibrator</string>
+    <string name="service_label">Vibrator</string>
     <string name="description">The app will try to vibrate when a call is answered. You have to grant device and app notifications permission.</string>
     <string name="goto_button">GOTO</string>
     <string name="filter_package_names">Filter packages</string>
