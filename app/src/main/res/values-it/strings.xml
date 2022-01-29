@@ -6,4 +6,6 @@
     <string name="goto_button">VAI</string>
     <string name="filter_package_names">Filtra pacchetti</string>
     <string name="filter_package_names_description">Passa solo nomi di pacchetti con suffisso \".dialer\".</string>
+    <string name="vibe_pattern">Andamento vibrazione</string>
+    <string name="vibe_pattern_error">Aspetta,Vibra..</string>
 </resources>
