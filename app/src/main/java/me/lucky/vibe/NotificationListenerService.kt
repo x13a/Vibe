@@ -83,8 +83,7 @@ class NotificationListenerService : NotificationListenerService() {
 
     override fun onListenerConnected() {
         super.onListenerConnected()
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || !prefs.isFilterPackageNames) return
-        migrate()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && prefs.isFilterPackageNames) migrate()
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
