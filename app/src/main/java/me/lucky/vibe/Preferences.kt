@@ -10,7 +10,7 @@ class Preferences(ctx: Context) {
         private const val VIBE_PATTERN = "vibe_pattern"
 
         const val VIBE_PATTERN_DELIMITER = ","
-        val DEFAULT_VIBE_PATTERN = arrayOf("50", "100", "50", "100")
+        val DEFAULT_VIBE_PATTERN = arrayOf("0", "200")
             .joinToString(VIBE_PATTERN_DELIMITER)
     }
 
