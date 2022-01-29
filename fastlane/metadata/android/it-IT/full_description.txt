@@ -1,9 +1,14 @@
 Piccola app per vibrare quando una chiamata viene risposta.
 
-Testata:
+Testati:
 * Telefono (com.android.dialer)
 * Telefono Google (com.google.android.dialer)
 * Simple Dialer (com.simplemobiletools.dialer)
+
+Permessi:
+* Notifiche        - cerca una risposta alla chiamata
+* Vibrazione       - notifica quando una chiamata viene risposta
+* QueryAllPackages - disabilita gli eventi di notifica per le app non .dialer su Android 12 e successivi
 
 È un software open source gratuito.
 Licenza: GPL-3
