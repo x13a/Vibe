@@ -32,6 +32,46 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/vibeAtStart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="@string/vibe_at_start" />
+
+            <TextView
+                android:id="@+id/description2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/vibe_at_start_description"
+                android:textSize="12sp" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/vibeAtEnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="@string/vibe_at_end" />
+
+            <TextView
+                android:id="@+id/description3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/vibe_at_end_description"
+                android:textSize="12sp" />
+
+            <Space
+                android:layout_marginVertical="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="8dp"
+                android:background="?android:attr/listDivider" />
+
             <CheckBox
                 android:id="@+id/filterPackageNames"
                 android:layout_width="match_parent"
@@ -41,7 +81,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/description2"
+                android:id="@+id/description4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/filter_package_names_description"
@@ -54,14 +94,17 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/vibePattern"
+                app:errorEnabled="true"
+                android:hint="@string/vibe_pattern"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/vibe_pattern" />
+                    android:layout_height="wrap_content" />
+
             </com.google.android.material.textfield.TextInputLayout>
+
         </LinearLayout>
     </ScrollView>
 

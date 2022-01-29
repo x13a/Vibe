@@ -1,4 +1,4 @@
-Tiny app to vibrate when a call is answered.
+Tiny app to vibrate when a call is answered and/or has ended.
 
 Tested:
 * Phone (com.android.dialer)
@@ -6,9 +6,8 @@ Tested:
 * Simple Dialer (com.simplemobiletools.dialer)
 
 Permissions:
-* Notifications    - scan for a call answer
-* Vibrate          - notify when a call is answered
-* QueryAllPackages - disable notification events for not .dialer apps on Android 12 and newer
+* NOTIFICATION_LISTENER - scan for a call answer/end
+* VIBRATE - notify when a call is answered / has ended
 
 It is Free Open Source Software.
 License: GPL-3

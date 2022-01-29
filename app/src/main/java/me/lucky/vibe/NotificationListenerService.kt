@@ -2,7 +2,6 @@ package me.lucky.vibe
 
 import android.Manifest
 import android.app.Notification
-import android.content.Intent
 import android.media.AudioManager
 import android.os.Build
 import android.os.VibrationEffect
@@ -12,21 +11,21 @@ import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.telecom.TelecomManager
 import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresPermission
 import java.lang.NumberFormatException
 
 class NotificationListenerService : NotificationListenerService() {
     companion object {
-        private val TAG = NotificationListenerService::class.java.simpleName
+        private val TAG = NotificationListenerService::class.simpleName
         private const val DIALER_SUFFIX = ".dialer"
-        private const val MAX_DELAY = 2000
+        private const val MAX_DELAY = 2000L
     }
 
     private lateinit var prefs: Preferences
     private var telecomManager: TelecomManager? = null
     private var audioManager: AudioManager? = null
     private var vibrator: Vibrator? = null
+    private var key: String? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -46,7 +45,9 @@ class NotificationListenerService : NotificationListenerService() {
 
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
         super.onNotificationPosted(sbn)
+        val isVibeAtStart = prefs.isVibeAtStart
         if (sbn == null
+            || !(isVibeAtStart || prefs.isVibeAtEnd)
             || (audioManager?.mode != AudioManager.MODE_IN_CALL
                 && audioManager?.mode != AudioManager.MODE_IN_COMMUNICATION)
             || !sbn.isOngoing
@@ -56,6 +57,18 @@ class NotificationListenerService : NotificationListenerService() {
             || !sbn.notification.extras.getBoolean(Notification.EXTRA_SHOW_CHRONOMETER)
             || sbn.notification.extras.getBoolean(Notification.EXTRA_CHRONOMETER_COUNT_DOWN)
             || sbn.notification.`when` < System.currentTimeMillis() - MAX_DELAY) return
+        synchronized(this) { key = sbn.key }
+        if (!isVibeAtStart) return
+        vibrate()
+    }
+
+    override fun onNotificationRemoved(sbn: StatusBarNotification?) {
+        super.onNotificationRemoved(sbn)
+        if (sbn == null || !prefs.isVibeAtEnd) return
+        synchronized(this) {
+            if (key != sbn.key) return
+            key = null
+        }
         vibrate()
     }
 
@@ -76,34 +89,12 @@ class NotificationListenerService : NotificationListenerService() {
                 str.split(Preferences.VIBE_PATTERN_DELIMITER).map { it.toLong() }.toLongArray()
             } catch (exc: NumberFormatException) { null }
         }
-        var result = toLongArray(prefs.vibePattern)
-        if (result == null) result = toLongArray(Preferences.DEFAULT_VIBE_PATTERN)
-        return result
+        return toLongArray(prefs.vibePattern) ?: toLongArray(Preferences.DEFAULT_VIBE_PATTERN)
     }
 
     override fun onListenerConnected() {
         super.onListenerConnected()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && prefs.isFilterPackageNames) migrate()
-    }
-
-    @RequiresApi(Build.VERSION_CODES.S)
-    private fun migrate() {
-        val packages = packageManager
-            .getInstalledPackages(0)
-            .map { it.packageName }
-            .toMutableSet()
-        packages.addAll(packageManager
-            .queryIntentActivities(
-                Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER),
-                0,
-            )
-            .map{ it.activityInfo.packageName })
-        migrateNotificationFilter(
-            0,
-            packages.filterNot {
-                it.endsWith(DIALER_SUFFIX) ||
-                it == telecomManager?.defaultDialerPackage
-            },
-        )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+            migrateNotificationFilter(0, null)
     }
 }

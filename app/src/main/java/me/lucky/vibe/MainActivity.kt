@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     private fun init() {
         prefs = Preferences(this)
         binding.apply {
+            vibeAtStart.isChecked = prefs.isVibeAtStart
+            vibeAtEnd.isChecked = prefs.isVibeAtEnd
             filterPackageNames.isChecked = prefs.isFilterPackageNames
             vibePattern.editText?.setText(prefs.vibePattern)
         }
@@ -32,15 +34,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun setup() {
         binding.apply {
+            vibeAtStart.setOnCheckedChangeListener { _, isChecked ->
+                prefs.isVibeAtStart = isChecked
+            }
+            vibeAtEnd.setOnCheckedChangeListener { _, isChecked ->
+                prefs.isVibeAtEnd = isChecked
+            }
             filterPackageNames.setOnCheckedChangeListener { _, isChecked ->
                 prefs.isFilterPackageNames = isChecked
             }
-            vibePattern.editText?.doAfterTextChanged { text ->
-                val str = text.toString()
-                if (vibePatternRegex.matcher(str).matches())
+            vibePattern.editText?.doAfterTextChanged {
+                val str = it?.toString() ?: ""
+                if (vibePatternRegex.matcher(str).matches()) {
                     prefs.vibePattern = str
-                else
-                    vibePattern.editText?.error = getString(R.string.vibe_pattern_error)
+                    vibePattern.error = null
+                } else {
+                    vibePattern.error = getString(R.string.vibe_pattern_error)
+                }
             }
             gotoButton.setOnClickListener {
                 startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))

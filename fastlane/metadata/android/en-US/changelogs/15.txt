@@ -1,0 +1,4 @@
+remove query permission
+vibrate on a call has ended
+separate switch for a call is answered
+update Italian translation, thanks to Giovanni Donisi (@gdonisi + @giovannidonisi)

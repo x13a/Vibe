@@ -1,6 +1,6 @@
 # Vibe
 
-Vibrate on a call answer.
+Vibrate on a call answer/end.
 
 [<img
      src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
@@ -16,18 +16,17 @@ Vibrate on a call answer.
      width="30%" 
      height="30%">
 
-Tiny app to vibrate when a call is answered.
+Tiny app to vibrate when a call is answered and/or has ended.
 
 Tested:
-- Phone (com.android.dialer)
-- Google Phone (com.google.android.dialer)
-- Simple Dialer (com.simplemobiletools.dialer)
+* Phone (com.android.dialer)
+* Google Phone (com.google.android.dialer)
+* Simple Dialer (com.simplemobiletools.dialer)
 
 ## Permissions
 
-- Notifications    - scan for a call answer
-- Vibrate          - notify when a call is answered
-- QueryAllPackages - disable notification events for not .dialer apps on Android 12 and newer
+* NOTIFICATION_LISTENER - scan for a call answer/end
+* VIBRATE               - notify when a call is answered / has ended
 
 ## License
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](https://www.gnu.org/licenses/gpl-3.0.en.html)
