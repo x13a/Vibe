@@ -1,4 +1,4 @@
-Piccola app per vibrare quando una chiamata viene risposta.
+Piccola app per vibrare quando una chiamata viene risposta e/o termina.
 
 Testati:
 * Telefono (com.android.dialer)
@@ -6,8 +6,8 @@ Testati:
 * Simple Dialer (com.simplemobiletools.dialer)
 
 Permessi:
-* NOTIFICATION_LISTENER - cerca una risposta alla chiamata
-* VIBRATE - notifica quando una chiamata viene risposta
+* NOTIFICATION_LISTENER - cerca una risposta/fine chiamata
+* VIBRATE - notifica quando una chiamata viene risposta / è terminata
 
 È un software open source gratuito.
 Licenza: GPL-3

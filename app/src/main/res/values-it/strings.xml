@@ -4,6 +4,10 @@
     <string name="service_label">Vibratore</string>
     <string name="description">L\'app proverà a vibrare quando una chiamata viene risposta. Devi concedere l\'autorizzazione alle notifiche del dispositivo e dell\'app.</string>
     <string name="goto_button">VAI</string>
+    <string name="vibe_at_start">Vibra all\'inizio</string>
+    <string name="vibe_at_start_description">Vibra quando una chiamata viene risposta.</string>
+    <string name="vibe_at_end">Vibra alla fine</string>
+    <string name="vibe_at_end_description">Vibra quando una chiamata termina.</string>
     <string name="filter_package_names">Filtra pacchetti</string>
     <string name="filter_package_names_description">Passa solo nomi di pacchetti con suffisso \".dialer\".</string>
     <string name="vibe_pattern">Andamento vibrazione</string>
