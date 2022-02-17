@@ -6,8 +6,8 @@ Tested:
 * Simple Dialer (com.simplemobiletools.dialer)
 
 Permissions:
-* NOTIFICATION_LISTENER - scan for a call answer/end
-* VIBRATE - notify when a call is answered / has ended
+* NOTIFICATION_LISTENER - scan for a call answer or end
+* VIBRATE - notify when a call is answered or has ended
 
 It is Free Open Source Software.
 License: GPL-3

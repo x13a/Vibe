@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Vibe</string>
     <string name="service_label">Vibrator</string>
-    <string name="description">The app can try to vibrate when a call is answered and/or has ended. You have to grant device and app notifications permission.</string>
+    <string name="description">The app will try to vibrate when a call is answered and/or has ended. You have to grant device and app notifications permission.</string>
     <string name="goto_button">GOTO</string>
     <string name="vibe_at_start">Vibe at start</string>
     <string name="vibe_at_start_description">Vibrate when a call is answered.</string>

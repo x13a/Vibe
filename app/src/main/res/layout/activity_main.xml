@@ -95,11 +95,15 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/vibePattern"
                 app:errorEnabled="true"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/ic_baseline_check_circle_24"
                 android:hint="@string/vibe_pattern"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:digits="0123456789,"
+                    android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

@@ -1,30 +1,22 @@
 package me.lucky.vibe
 
-import android.Manifest
 import android.app.Notification
 import android.media.AudioManager
 import android.os.Build
-import android.os.VibrationEffect
-import android.os.Vibrator
-import android.os.VibratorManager
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.telecom.TelecomManager
-import android.util.Log
-import androidx.annotation.RequiresPermission
-import java.lang.NumberFormatException
 
 class NotificationListenerService : NotificationListenerService() {
     companion object {
-        private val TAG = NotificationListenerService::class.simpleName
         private const val DIALER_SUFFIX = ".dialer"
         private const val MAX_DELAY = 2000L
     }
 
     private lateinit var prefs: Preferences
+    private lateinit var vibrator: Vibrator
     private var telecomManager: TelecomManager? = null
     private var audioManager: AudioManager? = null
-    private var vibrator: Vibrator? = null
     private var key: String? = null
 
     override fun onCreate() {
@@ -34,13 +26,9 @@ class NotificationListenerService : NotificationListenerService() {
 
     private fun init() {
         prefs = Preferences(this)
+        vibrator = Vibrator(this)
         telecomManager = getSystemService(TelecomManager::class.java)
         audioManager = getSystemService(AudioManager::class.java)
-        vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            getSystemService(VibratorManager::class.java)?.defaultVibrator
-        } else {
-            getSystemService(Vibrator::class.java)
-        }
     }
 
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
@@ -57,39 +45,16 @@ class NotificationListenerService : NotificationListenerService() {
             || !sbn.notification.extras.getBoolean(Notification.EXTRA_SHOW_CHRONOMETER)
             || sbn.notification.extras.getBoolean(Notification.EXTRA_CHRONOMETER_COUNT_DOWN)
             || sbn.notification.`when` < System.currentTimeMillis() - MAX_DELAY) return
-        synchronized(this) { key = sbn.key }
+        key = sbn.key
         if (!isVibeAtStart) return
-        vibrate()
+        vibrator.vibrate()
     }
 
     override fun onNotificationRemoved(sbn: StatusBarNotification?) {
         super.onNotificationRemoved(sbn)
-        if (sbn == null || !prefs.isVibeAtEnd) return
-        synchronized(this) {
-            if (key != sbn.key) return
-            key = null
-        }
-        vibrate()
-    }
-
-    @RequiresPermission(Manifest.permission.VIBRATE)
-    private fun vibrate() {
-        Log.d(TAG, "vibrate")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrator?.vibrate(VibrationEffect.createWaveform(vibePattern(), -1))
-        } else {
-            @Suppress("deprecation")
-            vibrator?.vibrate(vibePattern(), -1)
-        }
-    }
-
-    private fun vibePattern(): LongArray? {
-        val toLongArray = { str: String ->
-            try {
-                str.split(Preferences.VIBE_PATTERN_DELIMITER).map { it.toLong() }.toLongArray()
-            } catch (exc: NumberFormatException) { null }
-        }
-        return toLongArray(prefs.vibePattern) ?: toLongArray(Preferences.DEFAULT_VIBE_PATTERN)
+        if (sbn == null || !prefs.isVibeAtEnd || key != sbn.key) return
+        key = null
+        vibrator.vibrate()
     }
 
     override fun onListenerConnected() {

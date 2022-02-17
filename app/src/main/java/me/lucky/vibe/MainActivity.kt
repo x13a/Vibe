@@ -12,7 +12,9 @@ import me.lucky.vibe.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var prefs: Preferences
+    private lateinit var vibrator: Vibrator
     private val vibePatternRegex by lazy { Pattern.compile("^\\d+(,\\d+)*$") }
+    private val zeroVibePatternRegex by lazy { Pattern.compile("^0+(,0+)*$") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
         prefs = Preferences(this)
+        vibrator = Vibrator(this)
         binding.apply {
             vibeAtStart.isChecked = prefs.isVibeAtStart
             vibeAtEnd.isChecked = prefs.isVibeAtEnd
@@ -45,12 +48,17 @@ class MainActivity : AppCompatActivity() {
             }
             vibePattern.editText?.doAfterTextChanged {
                 val str = it?.toString() ?: ""
-                if (vibePatternRegex.matcher(str).matches()) {
+                if (vibePatternRegex.matcher(str).matches() &&
+                    !zeroVibePatternRegex.matcher(str).matches())
+                {
                     prefs.vibePattern = str
                     vibePattern.error = null
                 } else {
                     vibePattern.error = getString(R.string.vibe_pattern_error)
                 }
+            }
+            vibePattern.setEndIconOnClickListener {
+                if (vibePattern.error == null) vibrator.vibrate()
             }
             gotoButton.setOnClickListener {
                 startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))

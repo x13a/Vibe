@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Vibe</string>
     <string name="service_label">Вибратор</string>
-    <string name="description">Приложение может пытаться включить вибрацию при ответе на звонок и/или завершении вызова. Вы должны выдать разрешение на чтение уведомлений устройства.</string>
+    <string name="description">Приложение попытается включить вибрацию при ответе на звонок и/или завершении вызова. Вы должны выдать разрешение на чтение уведомлений устройства.</string>
     <string name="goto_button">GOTO</string>
     <string name="vibe_at_start">В начале</string>
     <string name="vibe_at_start_description">Вибрировать при ответе на звонок.</string>

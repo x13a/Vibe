@@ -1,0 +1,2 @@
+vibe pattern preview
+update Italian translation, thanks to Giovanni Donisi (@gdonisi + @giovannidonisi)

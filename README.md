@@ -1,6 +1,6 @@
 # Vibe
 
-Vibrate on a call answer/end.
+Vibrate on a call answer or end.
 
 [<img
      src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
@@ -25,8 +25,8 @@ Tested:
 
 ## Permissions
 
-* NOTIFICATION_LISTENER - scan for a call answer/end
-* VIBRATE               - notify when a call is answered / has ended
+* NOTIFICATION_LISTENER - scan for a call answer or end
+* VIBRATE               - notify when a call is answered or has ended
 
 ## License
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](https://www.gnu.org/licenses/gpl-3.0.en.html)
