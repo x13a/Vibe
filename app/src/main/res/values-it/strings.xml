@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Vibe</string>
-    <string name="service_label">Vibratore</string>
-    <string name="description">L\'app proverà a vibrare quando una chiamata viene risposta. Devi concedere l\'autorizzazione alle notifiche del dispositivo e dell\'app.</string>
     <string name="goto_button">VAI</string>
     <string name="vibe_at_start">Vibra all\'inizio</string>
     <string name="vibe_at_start_description">Vibra quando una chiamata viene risposta.</string>

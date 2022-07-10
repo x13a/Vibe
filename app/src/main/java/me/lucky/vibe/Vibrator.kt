@@ -6,15 +6,10 @@ import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
-import android.util.Log
 import androidx.annotation.RequiresPermission
 import java.lang.NumberFormatException
 
 class Vibrator(ctx: Context) {
-    companion object {
-        private val TAG = Vibrator::class.simpleName
-    }
-
     private val prefs = Preferences(ctx)
     private val vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
         ctx.getSystemService(VibratorManager::class.java)?.defaultVibrator
@@ -23,7 +18,6 @@ class Vibrator(ctx: Context) {
 
     @RequiresPermission(Manifest.permission.VIBRATE)
     fun vibrate() {
-        Log.d(TAG, "vibrate")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             vibrator?.vibrate(VibrationEffect.createWaveform(vibePattern(), -1))
         } else {

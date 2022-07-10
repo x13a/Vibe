@@ -35,34 +35,32 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setup() {
-        binding.apply {
-            vibeAtStart.setOnCheckedChangeListener { _, isChecked ->
-                prefs.isVibeAtStart = isChecked
+    private fun setup() = binding.apply {
+        vibeAtStart.setOnCheckedChangeListener { _, isChecked ->
+            prefs.isVibeAtStart = isChecked
+        }
+        vibeAtEnd.setOnCheckedChangeListener { _, isChecked ->
+            prefs.isVibeAtEnd = isChecked
+        }
+        filterPackageNames.setOnCheckedChangeListener { _, isChecked ->
+            prefs.isFilterPackageNames = isChecked
+        }
+        vibePattern.editText?.doAfterTextChanged {
+            val str = it?.toString() ?: ""
+            if (vibePatternRegex.matcher(str).matches() &&
+                !zeroVibePatternRegex.matcher(str).matches())
+            {
+                prefs.vibePattern = str
+                vibePattern.error = null
+            } else {
+                vibePattern.error = getString(R.string.vibe_pattern_error)
             }
-            vibeAtEnd.setOnCheckedChangeListener { _, isChecked ->
-                prefs.isVibeAtEnd = isChecked
-            }
-            filterPackageNames.setOnCheckedChangeListener { _, isChecked ->
-                prefs.isFilterPackageNames = isChecked
-            }
-            vibePattern.editText?.doAfterTextChanged {
-                val str = it?.toString() ?: ""
-                if (vibePatternRegex.matcher(str).matches() &&
-                    !zeroVibePatternRegex.matcher(str).matches())
-                {
-                    prefs.vibePattern = str
-                    vibePattern.error = null
-                } else {
-                    vibePattern.error = getString(R.string.vibe_pattern_error)
-                }
-            }
-            vibePattern.setEndIconOnClickListener {
-                if (vibePattern.error == null) vibrator.vibrate()
-            }
-            gotoButton.setOnClickListener {
-                startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
-            }
+        }
+        vibePattern.setEndIconOnClickListener {
+            if (vibePattern.error == null) vibrator.vibrate()
+        }
+        gotoButton.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
         }
     }
 }
