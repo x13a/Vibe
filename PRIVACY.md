@@ -1,3 +1,3 @@
 # Privacy Policy
 
-The app has nothing to store, but settings.
+The app Vibe (me.lucky.vibe) has nothing to store, but settings.
