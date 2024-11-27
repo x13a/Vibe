@@ -29,6 +29,13 @@ Tiny app to vibrate when a call is answered and/or has ended.
 * NOTIFICATION_LISTENER - scan for a call answer or end
 * VIBRATE - notify when a call is answered or has ended
 
+## Localization
+
+[<img 
+     height="51" 
+     src="https://badges.crowdin.net/badge/dark/crowdin-on-light@2x.png" 
+     alt="Crowdin">](https://crwd.in/me-lucky-vibe)
+
 ## License
 
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](https://www.gnu.org/licenses/gpl-3.0.en.html)
