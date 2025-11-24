@@ -9,5 +9,5 @@
     <string name="filter_package_names">Filtrer les packages</string>
     <string name="filter_package_names_description">Utiliser uniquement avec les packages se terminant par \".dialer\"</string>
     <string name="vibe_pattern">Modèle de vibration</string>
-    <string name="vibe_pattern_error">Valeur incorrecte : temps d\'attente,temps de vibration</string>
+    <string name="vibe_pattern_error">Valeur incorrecte : temps d\'attente,temps de vibration.</string>
 </resources>
