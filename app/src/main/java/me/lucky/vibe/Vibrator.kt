@@ -30,7 +30,7 @@ class Vibrator(ctx: Context) {
         val toLongArray = { str: String ->
             try {
                 str.split(Preferences.VIBE_PATTERN_DELIMITER).map { it.toLong() }.toLongArray()
-            } catch (exc: NumberFormatException) { null }
+            } catch (_: NumberFormatException) { null }
         }
         return toLongArray(prefs.vibePattern) ?: toLongArray(Preferences.DEFAULT_VIBE_PATTERN)
     }
