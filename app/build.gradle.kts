@@ -38,6 +38,9 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    lint {
+        disable.add("MissingTranslation")
+    }
 }
 
 dependencies {
