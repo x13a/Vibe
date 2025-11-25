@@ -3,7 +3,6 @@ Tiny app to vibrate when a call is answered and/or has ended.
 Tested:
 * Phone (com.android.dialer)
 * Google Phone (com.google.android.dialer)
-* Simple Dialer (com.simplemobiletools.dialer)
 
 Permissions:
 * NOTIFICATION_LISTENER - scan for a call answer or end
