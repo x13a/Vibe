@@ -3,7 +3,6 @@
 Проверено:
 * Phone (com.android.dialer)
 * Google Phone (com.google.android.dialer)
-* Simple Dialer (com.simplemobiletools.dialer)
 
 Разрешения:
 * NOTIFICATION_LISTENER - искать признаки ответа на звонок или завершения вызова

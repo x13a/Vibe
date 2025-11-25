@@ -3,7 +3,6 @@ Piccola app per vibrare quando una chiamata viene risposta e/o termina.
 Testati:
 * Telefono (com.android.dialer)
 * Telefono Google (com.google.android.dialer)
-* Simple Dialer (com.simplemobiletools.dialer)
 
 Permessi:
 * NOTIFICATION_LISTENER - cerca una risposta/fine chiamata
