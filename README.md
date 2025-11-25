@@ -22,7 +22,6 @@ Tiny app to vibrate when a call is answered and/or has ended.
 
 * Phone (com.android.dialer)
 * Google Phone (com.google.android.dialer)
-* Simple Dialer (com.simplemobiletools.dialer)
 
 ## Permissions
 
@@ -34,7 +33,7 @@ Tiny app to vibrate when a call is answered and/or has ended.
 [<img 
      height="51" 
      src="https://badges.crowdin.net/badge/dark/crowdin-on-light@2x.png" 
-     alt="Crowdin">](https://crwd.in/me-lucky-vibe)
+     alt="Crowdin">](https://crowdin.com/project/me-lucky-vibe)
 
 ## License
 
