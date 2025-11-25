@@ -1,0 +1,4 @@
+android 16 update
+
+thanks:
+- tb06 for French translation
